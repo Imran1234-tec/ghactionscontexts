@@ -1,17 +1,25 @@
-name: This is a contexts testing github actions pipeline
+name: Contexts Testing GitHub Actions Pipeline
 
 on: 
-   push:
-     branches: [main]
+  push:
+    branches: [main]
 
 jobs:
-   contexts_build:
-   runs-on: ubuntu-latest
-   steps:
+  contexts_build:
+    runs-on: ubuntu-latest
 
-     - name: checkout source 
-       uses: actions/checkout@v4
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-       
-     - name: context testing
-       run: echo "Repo: ${{ github.repository }}, Branch: ${{ github.ref }}" 
+      - name: Print GitHub Context Info
+        run: |
+          echo "Repository: ${{ github.repository }}"
+          echo "Branch: ${{ github.ref }}"
+          echo "Commit SHA: ${{ github.sha }}"
+          echo "Event: ${{ github.event_name }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Workflow: ${{ github.workflow }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Run Number: ${{ github.run_number }}"
+          echo "Job: ${{ github.job }}"
