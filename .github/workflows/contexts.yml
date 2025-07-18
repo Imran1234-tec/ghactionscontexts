@@ -27,3 +27,17 @@ jobs:
           echo "Github token: ${{ github.token }}"
           echo "Github workspace: ${{ github.workspace }}"
           echo "Env: ${{ github.env }}"
+          echo "Runner: ${{ runner.os }}"
+
+
+      - name: notify if context failure
+        if: failure()
+        run: echo "Build context info pipeline failure"
+
+      - name: notify if pipeline success
+        if: success()
+        run: echo "Build pipeline is successfully executed"
+
+      - name: deep cleanup after pipeline completion
+        if: always()
+        run: cleanup the pipeline
