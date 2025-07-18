@@ -40,4 +40,6 @@ jobs:
 
       - name: deep cleanup after pipeline completion
         if: always()
-        run: cleanup the pipeline
+        run: |
+         rm -rf* ${{github.workspace }}
+         echo "Workspace: ${{ github.workspace }} is cleaned"
