@@ -6,6 +6,8 @@ on:
 
 jobs:
   context_build:
+    env: 
+      MY_ENV: "test"
     runs-on: ubuntu-latest
     steps:
       - name: contexts build to check the values in github actions
@@ -24,3 +26,4 @@ jobs:
           echo "Job: ${{ github.job }}"
           echo "Github token: ${{ github.token }}"
           echo "Github workspace: ${{ github.workspace }}"
+          echo "Env: ${{ github.env }}"
